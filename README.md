@@ -6,7 +6,7 @@
 
 ## Quantumlt X
 
-<button data-href="shadowrocket://install?local_files=https://github.com/Kim-Jisoooo/iOS_Configuration_Files/raw/main/Quantumult_X.conf">测试</button>
+<button onclick="handleClick(this)" data-href="shadowrocket://install?local_files=https://github.com/Kim-Jisoooo/iOS_Configuration_Files/raw/main/Quantumult_X.conf">测试</button>
 
 ## Shadowrocket
 
