@@ -6,7 +6,9 @@
 
 ## Quantumlt X
 
-https://github.com/Kim-Jisoooo/iOS_Configuration_Files/raw/main/Quantumult_X.conf
+<button data-href="shadowrocket://install?local_files=https://github.com/Kim-Jisoooo/iOS_Configuration_Files/raw/main/Quantumult_X.conf">
+
+
 
 ## Shadowrocket
 
