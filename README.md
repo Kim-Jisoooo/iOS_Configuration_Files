@@ -2,11 +2,7 @@
 
 ## 前言
 
-**Quantumlt X 和 Shadowrocket 配置文件**
-
-## Quantumlt X
-
-https://github.com/Kim-Jisoooo/iOS_Configuration_Files/raw/main/Quantumlt_X.conf
+**Shadowrocket 配置文件**
 
 ## Shadowrocket
 
