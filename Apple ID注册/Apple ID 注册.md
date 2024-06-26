@@ -9,13 +9,13 @@
 3. 输入网址: https://appleid.apple.com/account
 4. 填写资料
 
-![1](https://github.com/Kim-Jisoooo/iOS_Configuration_Files/raw/main/Image Citation/1.jpeg)
+![1](https://github.com/Kim-Jisoooo/iOS_Configuration_Files/raw/main/ImageCitation/1.jpeg)
 
 1. 输入验证码
 
-![2](https://github.com/Kim-Jisoooo/iOS_Configuration_Files/raw/main/Image Citation/2.png)
+![2](https://github.com/Kim-Jisoooo/iOS_Configuration_Files/raw/main/ImageCitation/2.png)
 
-1. ![3](https://github.com/Kim-Jisoooo/iOS_Configuration_Files/raw/main/Image Citation/3.png)
+1. ![3](https://github.com/Kim-Jisoooo/iOS_Configuration_Files/raw/main/ImageCitation/3.png)
 
 1. 更改Apple ID 地区
    - ![4](https://github.com/Kim-Jisoooo/iOS_Configuration_Files/raw/main/Image Citation/4.jpeg)
@@ -31,5 +31,3 @@
 ## 登录
 
 准备工具: Iphone & Mac & Ipad
-
-![1](D:\2_Study\200_学习空间\203_Git\iOS_Configuration_Files\Image Citation\1.jpeg)
