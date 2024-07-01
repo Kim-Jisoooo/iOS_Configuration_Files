@@ -1,0 +1,99 @@
+/**
+ * 脚本功能：网易云音乐黑胶vip++++
+
+[rewrite_local]
+# > 网易云音乐黑胶vip
+
+# 播放器会员皮肤
+^https:\/\/interface.+music\.163\.com\/eapi\/playermode\/ url script-request-header https://raw.githubusercontent.com/WeiGiegie/666/main/wangyiyun.js
+# 搜索结果会员歌曲
+^https:\/\/interface.+music\.163\.com\/eapi\/search\/complex\/(page|rec\/song\/get) url script-request-header https://raw.githubusercontent.com/WeiGiegie/666/main/wangyiyun.js
+# 播放器会员歌曲
+^https:\/\/interface.+music\.163\.com\/eapi\/v3\/song\/detail url script-request-header https://raw.githubusercontent.com/WeiGiegie/666/main/wangyiyun.js
+^https:\/\/interface.+music\.163\.com\/eapi\/song\/(chorus|enhance\/|play\/|type\/detail\/get) url script-request-header https://raw.githubusercontent.com/WeiGiegie/666/main/wangyiyun.js
+^https:\/\/interface.+music\.163\.com\/eapi\/(v1\/artist\/top\/song|v3\/discovery\/recommend\/songs) url script-request-header https://raw.githubusercontent.com/WeiGiegie/666/main/wangyiyun.js
+# 侧边栏会员等级
+^https:\/\/interface.+music\.163\.com\/eapi\/vipnewcenter\/app\/resource\/newaccountpage url script-request-header https://raw.githubusercontent.com/WeiGiegie/666/main/wangyiyun.js
+# 首页歌单会员歌曲
+^https?:\/\/interface.+music\.163\.com\/eapi\/(homepage\/|v6\/)?playlist\/ url script-request-header https://raw.githubusercontent.com/WeiGiegie/666/main/wangyiyun.js
+# 会员认证
+^https?:\/\/interface.+music\.163\.com\/eapi\/vipauth\/app\/auth\/(soundquality\/)?query url script-request-header https://raw.githubusercontent.com/WeiGiegie/666/main/wangyiyun.js
+
+[mitm] 
+hostname = *music.163.com
+*
+*/
+
+// 引入 CryptoJS 库用于加密操作
+const CryptoJS = require('crypto-js');
+
+// 引入 big-integer 库用于大整数计算
+const bigInt = require("big-integer");
+
+/**
+ * AES 加密函数
+ * @param {string} word - 要加密的文本
+ * @param {object} key - 加密密钥
+ * @param {object} iv - 初始化向量
+ * @returns {string} - 加密后的 Base64 编码文本
+ */
+const aesEncrypt = (word, key, iv) => {
+    let srcs = CryptoJS.enc.Utf8.parse(word); // 将文本解析为 UTF-8 编码
+    let encrypted = CryptoJS.AES.encrypt(srcs, key, {
+        iv: iv, // 初始化向量
+        mode: CryptoJS.mode.CBC, // CBC 模式
+        padding: CryptoJS.pad.Pkcs7 // PKCS7 填充
+    });
+    return encrypted.ciphertext.toString(CryptoJS.enc.Base64); // 返回加密后的 Base64 编码文本
+};
+
+/**
+ * RSA 加密函数
+ * @param {string} text - 要加密的文本
+ * @param {string} pubKey - 公钥
+ * @param {string} modulus - 模数
+ * @returns {string} - 加密后的十六进制字符串
+ */
+const rsaEncrypt = (text, pubKey, modulus) => {
+    let reversedText = text.split('').reverse().join(''); // 反转文本
+    let biText = bigInt(reversedText, 16); // 将文本转换为大整数
+    let biEx = bigInt(pubKey, 16); // 将公钥转换为大整数
+    let biMod = bigInt(modulus, 16); // 将模数转换为大整数
+    let biRet = biText.modPow(biEx, biMod); // 执行模幂运算
+    return biRet.toString(16).padStart(256, '0'); // 返回加密后的十六进制字符串，长度不足 256 补 0
+};
+
+/**
+ * 生成随机密钥函数
+ * @param {number} size - 密钥长度
+ * @returns {string} - 生成的随机密钥
+ */
+const createSecretKey = (size) => {
+    let keys = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; // 密钥字符集
+    let key = "";
+    for (let i = 0; i < size; i++) {
+        let pos = Math.floor(Math.random() * keys.length); // 随机选择字符位置
+        key += keys.charAt(pos); // 生成密钥
+    }
+    return key; // 返回生成的密钥
+};
+
+/**
+ * 主加密函数
+ * @param {object} data - 要加密的数据
+ * @returns {object} - 包含加密参数和加密密钥的对象
+ */
+const Encrypt = (data) => {
+    const secKey = createSecretKey(16); // 生成 16 位随机密钥
+    // 双重 AES 加密，首先使用随机密钥，然后使用固定密钥和 IV
+    const encText = aesEncrypt(aesEncrypt(data, CryptoJS.enc.Utf8.parse(secKey), CryptoJS.enc.Utf8.parse("0102030405060708")), CryptoJS.enc.Utf8.parse("0CoJUm6Qyw8W8jud"), CryptoJS.enc.Utf8.parse("0102030405060708"));
+    // 使用 RSA 加密密钥
+    const encSecKey = rsaEncrypt(secKey, "010001", "00e0b509f6259df8642dbc35662901477df22677ec152b5ff68ace615bb7b725152b3ab17a876aea8a5aa76d2e417629ec4ee341f56135fccf695280104e0312ecbda92557c938701380d63d474b000d");
+    return {
+        params: encText, // 加密后的数据
+        encSecKey: encSecKey // 加密后的密钥
+    };
+};
+
+// 导出加密函数
+module.exports = Encrypt;
