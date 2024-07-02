@@ -29,3 +29,13 @@ Quantumult X
 
 https://raw.githubusercontent.com/Kim-Jisoooo/iOS_Configuration_Files/main/conf/Quantumult_X.conf
 
+## 感谢
+
+排名不分先后
+
+- [@blackmatrix7](https://github.com/blackmatrix7)
+- [@Koolson](https://github.com/Koolson) 
+- [@chxm1023](https://github.com/chxm1023)
+- [@fmz200](https://github.com/fmz200)
+- [RuCu6](https://github.com/RuCu6)
+
