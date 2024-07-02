@@ -38,4 +38,3 @@ https://raw.githubusercontent.com/Kim-Jisoooo/iOS_Configuration_Files/main/conf/
 - [@chxm1023](https://github.com/chxm1023)
 - [@fmz200](https://github.com/fmz200)
 - [RuCu6](https://github.com/RuCu6)
-
