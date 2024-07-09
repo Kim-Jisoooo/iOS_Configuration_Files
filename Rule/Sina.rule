@@ -67,6 +67,8 @@
 
 # 开屏广告 //*.uve.weibo.com
 
+^https:\/\/adstrategy\.biz\.weibo\.com\/v3\/strategy\/ad url reject
+
 ^https:\/\/bootrealtime\.uve\.weibo\.com\/v[23]\/ad\/realtime url reject-dict
 
 ^https:\/\/bootpreload\.uve\.weibo\.com\/v1\/ad\/preload url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/weibo.js
@@ -217,4 +219,4 @@
 
 ^https?:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=search_topic url script-response-body https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
 
-hostname = *.weibo.cn, *.weibo.com, weibo.com, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com, new.vip.weibo.cn, boot.biz.weibo.com
+hostname = *.weibo.cn, *.weibo.com, weibo.com, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com, new.vip.weibo.cn, boot.biz.weibo.com, adstrategy.biz.weibo.com
