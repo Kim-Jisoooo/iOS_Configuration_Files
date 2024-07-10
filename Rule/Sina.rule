@@ -221,4 +221,4 @@
 
 ^https?:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=search_topic url script-response-body https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
 
-hostname = *.weibo.cn, *.weibo.com, weibo.com, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com, new.vip.weibo.cn, boot.biz.weibo.com, adstrategy.biz.weibo.com
+hostname = *.weibo.cn, *.weibo.com, weibo.com, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com, new.vip.weibo.cn, boot.biz.weibo.com, adstrategy.biz.weibo.com, kadmimage.biz.weibo.com
