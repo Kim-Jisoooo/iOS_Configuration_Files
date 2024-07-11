@@ -69,7 +69,7 @@
 
 ^https?:\/\/kadmimage\.biz\.weibo\.com\/ad\/pic\/(.*?)\/(.*?)\.webp url reject
 
-^https?:\/\/adstrategy\.biz\.weibo\.com\/v3\/strategy\/ad\?\/(.*?) url reject
+^https?:\/\/adstrategy\.biz\.weibo\.com\/v3\/strategy\/ad\?reqid\=(.*) url reject
 
 ^https:\/\/bootrealtime\.uve\.weibo\.com\/v[23]\/ad\/realtime url reject-dict
 
